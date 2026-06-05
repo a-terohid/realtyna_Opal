@@ -1,0 +1,146 @@
+{
+  "site_identity": {
+    "light_logo": "/images/light_logo.svg",
+    "dark_logo": "/images/dark_logo.svg",
+    "site_icon": "/images/site_icon.png",
+    "siteName": "Opal",
+    "title": "Realtyfeed | Opal",
+    "description": "Realtyfeed | Opal Theme"
+  },
+  "styles": {
+    "primary_color_hover": "47 0 132",
+    "primary_color_from": "67 0 152",
+    "primary_color_to": "67 0 152",
+    "secondary_color_hover": "139 8 80",
+    "secondary_color_from": "159 28 100",
+    "secondary_color_to": "159 28 100",
+    "neutral_color_hover": "112 112 112",
+    "neutral_color_from": "86 86 86",
+    "neutral_color_to": "132 132 132"
+  },
+  "menus": {
+    "main_menu": ["Listings", "Agents", "Contact", "Blog"],
+    "sidebar_blog_menu": ["For Sale"],
+    "footer_menu": null
+  },
+  "home_sections": [
+    "search",
+    "agency",
+    "solutions",
+    "services",
+    "listings",
+    "cities",
+    "agents",
+    "blog-posts"
+  ],
+  "home_data": {
+    "search": {
+      "searchOnly": "false",
+      "titleDisplay": "true",
+      "title": "Opal Real Estate Corporate",
+      "subTitle": "Opal is providing Real Estate Associations technology",
+      "bgImage": "https://deandevsite.realtyna.info/lavender-flower-wp/wp-content/uploads/2024/01/2.webp",
+      "bg_image": "/images/home_bg_img.webp"
+    },
+    "agency": {
+      "count": [
+        {
+          "title": "+96",
+          "subtitle": "Our Customers",
+          "id": "customizer-repeater-6598620a1587c"
+        },
+        {
+          "title": "+36",
+          "subtitle": "Our Agents",
+          "id": "customizer-repeater-65986211a017e"
+        },
+        {
+          "title": "+699",
+          "subtitle": "Our Property",
+          "id": "customizer-repeater-659862120cab5"
+        },
+        {
+          "title": "+967",
+          "subtitle": "Our Agency",
+          "id": "customizer-repeater-659862134d86f"
+        }
+      ],
+      "title": "Opal Real Estate Corporate",
+      "shadowTitle": "Opal Agency",
+      "description": "Opal Group transforms real estate for life's next chapter. As the top real estate website in the U.S., Opal and its affiliates offer seamless selling, buying, renting, and financing experiences. Opal Home Loans, our affiliate lender, simplifies pre-approval and financing. Our brands include Opal , Opal Premier Agent, Opal Home Loans, Realtyna Closing Services, Opal Homes, Inc., Trulia, Out East, StreetEasy, HotPads, and ShowingTime. Unlock your real estate journey with Opal.",
+      "image": "/images/home_agency_img.webp"
+    },
+    "solutions": {
+      "count": [
+        {
+          "title": "Enterprise Solutions",
+          "subtitle": "Multisite Solutions",
+          "id": "customizer-repeater-6598620a931f5"
+        },
+        {
+          "title": "Clientele",
+          "subtitle": "Proven track record",
+          "id": "customizer-repeater-6598620aebf00"
+        },
+        {
+          "title": "License Model",
+          "subtitle": "Owned License Model",
+          "id": "customizer-repeater-6598620a83136"
+        },
+        {
+          "title": "Customer Service",
+          "subtitle": "Exceptional customer service",
+          "id": "customizer-repeater-6598620ae3276"
+        }
+      ],
+      "title": "Opal Solutions",
+      "shadowTitle": "Important Facts"
+    },
+    "services": {
+      "count": [
+        {
+          "image_url": "https://deandevsite.realtyna.info/lavender-flower-wp/wp-content/uploads/2024/01/service-1-white.png",
+          "id": "customizer-repeater-6598620a5457c"
+        },
+        {
+          "image_url": "https://deandevsite.realtyna.info/lavender-flower-wp/wp-content/uploads/2024/01/service-2-white.png",
+          "id": "customizer-repeater-6598620abc645"
+        },
+        {
+          "image_url": "https://deandevsite.realtyna.info/lavender-flower-wp/wp-content/uploads/2024/01/service-3-white.png",
+          "id": "customizer-repeater-6598620a1fa6f"
+        },
+        {
+          "image_url": "https://deandevsite.realtyna.info/lavender-flower-wp/wp-content/uploads/2024/01/service-4-white.png",
+          "id": "customizer-repeater-6598620af7e55"
+        },
+        {
+          "image_url": "https://deandevsite.realtyna.info/lavender-flower-wp/wp-content/uploads/2024/01/service-5-white.png",
+          "id": "customizer-repeater-6598620a6a14d"
+        }
+      ],
+      "title": "Why Opal",
+      "shadowTitle": "Real estate services",
+      "description": "Opal Group Is Reimagining Real Estate To Make It Easier To Unlock Life’s Next Chapter.As The Most-Visited Real Estate Website In The United States, Opal And Its Affiliates Offer Customers A On-Demand Experience For Selling, Buying, Renting And Financing With Transparency And Nearly Seamless End-To-End Service.",
+      "video": "https://deandevsite.realtyna.info/lavender-flower-wp/wp-content/uploads/2023/09/wpl-360p.mp4"
+    },
+    "blog_posts": {
+      "title": "Our Latest Blog Posts",
+      "shadowTitle": "Our Latest Blog Posts",
+      "buttonText": "Our Blog",
+      "description": "Opal is a proptech company based in the US. We’ve been empowering thousands of real estate websites with quality solutions for over a decade"
+    },
+    "listings": {
+      "title": "Opal Real Estate Corporate",
+      "shadowTitle": "Real Estate Agency"
+    },
+    "cities": {
+      "title": "Popular Cities",
+      "shadowTitle": "Popular Area"
+    },
+    "agents": {
+      "title": "Featured Agents In USA",
+      "shadowTitle": "Featured Agents"
+    }
+  }
+}

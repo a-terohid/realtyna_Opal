@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Gold */
+    --color-gold-gradient-from: 255 200 104;
+    --color-gold-gradient-to: 250 165 15;
+    --color-gold-gradient-hover: 235 144 10;
+    /* Black */
+    --color-black-gradient-from: 55 55 55;
+    --color-black-gradient-to: 75 75 75;
+    --color-black-gradient-hover: 38 38 38;
+  }
+}
+
+@layer components {
+  .box-container {
+    @apply max-w-[90rem] px-3 sm:px-[25px] md:px-[40px] lg:px-[55px] xl:px-[4.375rem];
+  }
+}
+
+@layer utilities {
+  .bg-neutral-gradient {
+    background: linear-gradient(
+        180deg,
+        rgb(var(--color-neutral-gradient-from)),
+        transparent
+      )
+      rgb(var(--color-neutral-gradient-to));
+  }
+
+  .bg-neutral-gradient-hover {
+    background-color: rgb(var(--color-neutral-gradient-hover));
+  }
+
+  .bg-primary-gradient {
+    background: linear-gradient(
+        180deg,
+        rgb(var(--color-primary-gradient-from)),
+        transparent
+      )
+      rgb(var(--color-primary-gradient-to));
+  }
+
+  .bg-primary-gradient-hover {
+    background-color: rgb(var(--color-primary-gradient-hover));
+  }
+
+  .bg-secondary-gradient {
+    background: linear-gradient(
+        180deg,
+        rgb(var(--color-secondary-gradient-from)),
+        transparent
+      )
+      rgb(var(--color-secondary-gradient-to));
+  }
+
+  .bg-secondary-gradient-hover {
+    background-color: rgb(var(--color-secondary-gradient-hover));
+  }
+
+  .bg-black-gradient {
+    background: linear-gradient(
+        180deg,
+        rgb(var(--color-black-gradient-from)),
+        transparent
+      )
+      rgb(var(--color-black-gradient-to));
+  }
+
+  .bg-black-gradient-hover {
+    background-color: rgb(var(--color-black-gradient-hover));
+  }
+
+  .bg-gold-gradient {
+    background: linear-gradient(
+        180deg,
+        rgb(var(--color-gold-gradient-from)),
+        transparent
+      )
+      rgb(var(--color-gold-gradient-to));
+  }
+
+  .bg-gold-gradient-hover {
+    background-color: rgb(var(--color-gold-gradient-hover));
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove fill from svg > path */
+svg.inheritFill > path {
+  fill: inherit !important;
+}
+
+/* Remove x icon from chrome search input  */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+/* remove scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.rc-slider {
+  padding: 0rem !important;
+  height: 0 !important;
+}
+
+.rc-slider-disabled {
+  opacity: 30%;
+}
+
+.bordered-text {
+  color: transparent;
+  -webkit-text-stroke-width: 1.2px;
+  -webkit-text-stroke-color: black;
+}
+
+.bordered-text-white {
+  color: transparent;
+  -webkit-text-stroke-width: 1.2px;
+  -webkit-text-stroke-color: white;
+}
+
+/* customize google map infobox styles */
+.gm-style .gm-style-iw-c {
+  padding: 0;
+  border-radius: 15px !important;
+
+  > button {
+    display: none !important;
+  }
+}
+
+.gm-style .gm-style-iw-d {
+  overflow: unset !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #8a8a8a;
+  border-radius: 999px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a4a4a4;
+}
