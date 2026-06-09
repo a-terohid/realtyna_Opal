@@ -8,9 +8,9 @@ import Image from "next/image"
 import { useState } from "react"
 import ReactPlayer from "react-player/lazy"
 
+import placeholder from "@/assets/images/placeholder.png"
 import { Button } from "@/components/common/Button"
 import { Skeleton } from "@/components/common/Skeleton"
-import placeholder from "@/assets/images/placeholder.png"
 import useIntersectionObserver from "@/hooks/useIntersectionObserver"
 
 const BlogSidebarVideo = () => {

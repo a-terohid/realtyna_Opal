@@ -8,8 +8,8 @@ import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 import ReactPlayer from "react-player/lazy"
 
-import { Button } from "@/components/common/Button"
 import placeholder from "@/assets/images/placeholder.png"
+import { Button } from "@/components/common/Button"
 import type { Post } from "@/types/blog.type"
 import { cn } from "@/utils/helpers"
 
