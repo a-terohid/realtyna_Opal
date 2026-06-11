@@ -36,6 +36,8 @@ const PropertyDetailsContainer: NextPage<IProps> = ({ details, agent }) => {
     (!!details.Latitude && !!details.Longitude) ||
     (!!details.Coordinates?.[0] && !!details.Coordinates?.[1])
 
+  
+
   return (
     <div className="flex w-full flex-col items-center justify-start gap-[2.1875rem]">
       <PropertyInfo details={details} />

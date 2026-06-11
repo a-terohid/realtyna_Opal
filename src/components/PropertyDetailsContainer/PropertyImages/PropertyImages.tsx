@@ -38,7 +38,6 @@ const PropertyImages: React.FC<IProps> = ({ details }) => {
   // Sort images by Order number
   const sortedImages = propertyDetails?.sort((a, b) => a.Order - b.Order)
   
-
   return (
     <section className="relative col-span-full grid h-[445px] w-full grid-cols-4 gap-[.77rem]">
       <ImagesSlider

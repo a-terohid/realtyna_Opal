@@ -36,6 +36,8 @@ const Disclaimers = ({
         (row) => row.short_name.toLowerCase() === name.toLowerCase()
       )
 
+      console.log(disclaimer)
+
     return (
       <>
         {disclaimer ? (

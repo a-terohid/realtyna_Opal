@@ -63,7 +63,7 @@ export default async function ListingDetailsPage(props: Props) {
       <Breadcrumb breadcrumbs={breadCrumbArray()} />
       <main className="box-container mx-auto grid grid-cols-1 gap-[1.875rem] pb-[5.625rem] pt-[1.5625rem] md:gap-[5.1875rem]">
         <PropertyDetailsContainer agent={agentData} details={propertyDetails} />
-        <NewsLetter />
+        <NewsLetter /> 
       </main>
     </>
   )
