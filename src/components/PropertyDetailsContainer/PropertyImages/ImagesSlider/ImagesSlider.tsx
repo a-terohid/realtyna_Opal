@@ -2,6 +2,8 @@
 import useEmblaCarousel from "embla-carousel-react"
 import Image from "next/image"
 import React, { useCallback, useEffect, useState } from "react"
+import ImageWithFallback from "@/components/common/ImageWithFallback"
+
 
 import {
   Dialog,
@@ -75,9 +77,9 @@ const ImagesSlider: React.FC<IProps> = ({
                   {image.Order}
                 </div>
                 <div className="relative block size-full min-h-[60dvh] md:min-h-[70dvh]">
-                  <Image
+                  <ImageWithFallback
                     placeholder={blurredImages ? "blur" : "empty"}
-                    fill
+                    fill={true}
                     blurDataURL={blurredImages}
                     sizes="(max-width: 1024px) 80vw, (max-width: 1280px) 60vw, 50vw"
                     src={image.MediaURL}
@@ -103,9 +105,9 @@ const ImagesSlider: React.FC<IProps> = ({
                 <div className="absolute right-2 top-2 z-10 flex size-6 shrink-0 items-center justify-center rounded-full bg-gray-4/20 p-2 text-base text-gray-19">
                   {image.Order}
                 </div>
-                <Image
+                <ImageWithFallback
                   placeholder={blurredImages ? "blur" : "empty"}
-                  fill
+                  fill={true}
                   src={image.Thumbnail}
                   sizes="20vw"
                   blurDataURL={blurredImages}

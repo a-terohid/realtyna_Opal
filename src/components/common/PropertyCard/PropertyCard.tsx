@@ -22,6 +22,7 @@ import {
   getDateSince,
   removeCommaAndWhitespaceAtStart
 } from "@/utils/helpers"
+import ImageWithFallback from "../ImageWithFallback"
 
 interface IProps {
   data: ListingsValue
@@ -117,7 +118,7 @@ const PropertyCard: React.FC<IProps> = ({ data, variant, index }) => {
         <span className="peer absolute inset-x-0 z-[1] mx-auto w-max rounded-full border border-gray-3 bg-gray-18/70 px-4 py-1.5 text-[15px] font-light text-white opacity-0 backdrop-blur-md transition-opacity duration-300 group-hover/img:opacity-100">
           View More
         </span>
-        <Image
+        <ImageWithFallback
           priority={index === 0 || index === 1 || index === 2 || index === 3}
           src={data?.Media?.[0]?.Thumbnail ?? placeholder}
           alt={data.ListingId}
@@ -130,8 +131,8 @@ const PropertyCard: React.FC<IProps> = ({ data, variant, index }) => {
                   ? "(max-width: 576px) 88vw,(max-width: 768px) 45vw,(max-width: 1024px) 33vw,(max-width: 1024px) 33vw, 17vw"
                   : "(max-width: 1024px) 80vw, 40vw"
           }
-          fill
-          className={cn(
+          fill={true}
+          style={cn(
             "h-full w-full cursor-pointer shadow-primary rounded-[.75rem] object-cover duration-300 group-hover/img:opacity-30",
             data?.Media && data?.Media?.length > 0 && "shadow-primary"
           )}

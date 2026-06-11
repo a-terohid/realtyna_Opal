@@ -10,6 +10,7 @@ import { cn } from "@/utils/helpers"
 
 import ImagesSlider from "./ImagesSlider/ImagesSlider"
 import ShowMoreOverlay from "./ShowMoreOverlay/ShowMoreOverlay"
+import ImageWithFallback from "@/components/common/ImageWithFallback"
 
 export interface Images {
   Order: number
@@ -37,6 +38,7 @@ const PropertyImages: React.FC<IProps> = ({ details }) => {
 
   // Sort images by Order number
   const sortedImages = propertyDetails?.sort((a, b) => a.Order - b.Order)
+
   
   return (
     <section className="relative col-span-full grid h-[445px] w-full grid-cols-4 gap-[.77rem]">
@@ -56,16 +58,16 @@ const PropertyImages: React.FC<IProps> = ({ details }) => {
             />
           )}
 
-          <Image
+          <ImageWithFallback
             onClick={() => setIsOpen(true)}
             priority={true}
             src={sortedImages[0] ? sortedImages[0].MediaURL : PlaceholderImage}
             sizes="(max-width: 767px) 100vw, (max-width: 1024px) 75vw, (max-width: 1280px) 50vw, 25vw"
             placeholder={details.blurredData ? "blur" : "empty"}
-            fill
+            fill={true}
             blurDataURL={details.blurredData}
             alt="property"
-            className={cn(
+            style={cn(
               "rounded-[.9375rem] object-cover",
               sortedImages[0] && "cursor-pointer"
             )}
