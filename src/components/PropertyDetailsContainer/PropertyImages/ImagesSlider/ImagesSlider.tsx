@@ -2,8 +2,6 @@
 import useEmblaCarousel from "embla-carousel-react"
 import Image from "next/image"
 import React, { useCallback, useEffect, useState } from "react"
-import ImageWithFallback from "@/components/common/ImageWithFallback"
-
 
 import {
   Dialog,
@@ -11,6 +9,7 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/common/Dialog"
+import ImageWithFallback from "@/components/common/ImageWithFallback"
 import type { ListingsValue, Media } from "@/types/listings.type"
 import { cn } from "@/utils/helpers"
 

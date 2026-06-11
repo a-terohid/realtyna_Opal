@@ -4,13 +4,13 @@ import Image from "next/image"
 import React, { useState } from "react"
 
 import PlaceholderImage from "@/assets/images/placeholder.png"
+import ImageWithFallback from "@/components/common/ImageWithFallback"
 import useWindowSize from "@/hooks/useWindowSize"
 import type { ListingsValue } from "@/types/listings.type"
 import { cn } from "@/utils/helpers"
 
 import ImagesSlider from "./ImagesSlider/ImagesSlider"
 import ShowMoreOverlay from "./ShowMoreOverlay/ShowMoreOverlay"
-import ImageWithFallback from "@/components/common/ImageWithFallback"
 
 export interface Images {
   Order: number
