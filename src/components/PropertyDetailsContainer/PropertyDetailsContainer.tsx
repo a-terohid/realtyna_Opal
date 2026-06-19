@@ -26,7 +26,7 @@ interface IProps {
   agent: AgentValue
 }
 
-const PropertyDetailsContainer: NextPage<IProps> = ({ details, agent }) => {
+const  PropertyDetailsContainer: NextPage<IProps> = ({ details, agent }) => {
 
   const newList = appliancesList.filter((item) =>
     details.Appliances?.includes(item.name)

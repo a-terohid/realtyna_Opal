@@ -8,6 +8,15 @@ interface IProps {
   isMulti?: boolean
 }
 
+const isEmpty = (value: IProps["value"]) => {
+  return (
+    value === null ||
+    value === undefined ||
+    value === "" ||
+    (Array.isArray(value) && value.length === 0)
+  )
+}
+
 const DetailRow: React.FC<IProps> = ({
   label,
   value,
@@ -15,30 +24,44 @@ const DetailRow: React.FC<IProps> = ({
   className,
   isMulti
 }) => {
+  if (isEmpty(value)) return null
+
+  const renderValue = () => {
+    // Multi values (array)
+    if (isMulti && Array.isArray(value)) {
+      return value.join(" - ")
+    }
+
+    // Date handling
+    if (isDate) {
+      const date = value instanceof Date ? value : new Date(value as string)
+      if (isNaN(date.getTime())) return "-"
+      return Intl.DateTimeFormat("en-US").format(date)
+    }
+
+    // Boolean handling
+    if (typeof value === "boolean") {
+      return value ? "Yes" : "No"
+    }
+
+    // Default safe render
+    return String(value)
+  }
+
   return (
     <div
       className={cn(
-        "row-span-1 gap-2 flex w-full justify-between text-sm text-black",
+        "row-span-1 flex w-full justify-between gap-2 text-sm text-black",
         className
       )}
     >
       <span className="font-normal">{label}</span>
 
-      {isMulti && Array.isArray(value) ? (
-        <p className="text-end font-semibold">
-          {value.map((item: string, index: number, array: string[]) => {
-            return index === array.length - 1 ? item : item + " - "
-          })}
-        </p>
-      ) : (
-        <span className="break-all text-end font-semibold">
-          {isDate
-            ? Intl.DateTimeFormat("en-US").format(new Date(value as Date))
-            : (value as string)}
-        </span>
-      )}
+      <span className="break-all text-end font-semibold">
+        {renderValue()}
+      </span>
     </div>
   )
 }
-DetailRow
+
 export default DetailRow
