@@ -16,7 +16,7 @@ interface IProps {
 const HomeServices: React.FC<IProps> = ({ data }) => {
   return (
     <section className="relative z-[1] flex w-full flex-col items-center justify-end gap-16">
-      {data.video && <HomeVideo video={data.video} />}
+      {/* {data.video && <HomeVideo video={data.video} />} */}
       <div className="relative flex w-full flex-col items-center justify-start bg-primary-1 pb-[110px] pt-[230px]">
         <svg
           role="presentation"
