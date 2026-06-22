@@ -1,6 +1,5 @@
 "use client"
 
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react"
 
 import { InputV2 } from "@/components/common/FormInput/FormInputV2"
@@ -10,49 +9,56 @@ interface IProps {
 }
 
 const MortgageCalculator: React.FC<IProps> = ({ price }) => {
-  const [total, setTotal] = useState<number>(0)
-  const [downPayment, setDownPayment] = useState<number>(0)
-  const [loanTerm, setLoanTerm] = useState<number>(0)
-  const [monthlyPayment, setMonthlyPayment] = useState<number>(0)
-  const [interestRate, setInterestRate] = useState<number>(0)
-  const [tax, setTax] = useState<number>(0)
-  const [insurance, setInsurance] = useState<number>(0)
+  const [total, setTotal] = useState(price)
+
+  const [downPayment, setDownPayment] = useState(10)
+  const [loanTerm, setLoanTerm] = useState(30)
+  const [interestRate, setInterestRate] = useState(4.5)
+  const [tax, setTax] = useState(1.2)
+  const [insurance, setInsurance] = useState(0.5)
+
+  const [monthlyPayment, setMonthlyPayment] = useState(0)
 
   useEffect(() => {
-    //Update monthly payment whenever the dependencies change
-    if (total && downPayment && loanTerm && interestRate && tax && insurance) {
-      calculateMonthlyPayment()
-    }
-  }, [
-    total,
-    downPayment,
-    loanTerm,
-    monthlyPayment,
-    interestRate,
-    tax,
-    insurance
-  ])
+    setTotal(price)
+  }, [price])
 
-  //==================================================================================
+  useEffect(() => {
+    calculateMonthlyPayment()
+  }, [total, downPayment, loanTerm, interestRate, tax, insurance])
 
-  // Calculate monthly payment and set in state
   const calculateMonthlyPayment = () => {
-    const principal = total - downPayment
-    const monthlyInterestRate = interestRate / 1200
-    const numPayments = loanTerm * 12
-    const taxes = tax / 12
-    const insuranceRate = insurance / 12
+    if (total <= 0 || loanTerm <= 0) {
+      setMonthlyPayment(0)
+      return
+    }
 
-    const monthlyPayment =
-      (principal * monthlyInterestRate) /
-        (1 - Math.pow(1 + monthlyInterestRate, -numPayments)) +
-      taxes +
-      insuranceRate
+    const downPaymentAmount = total * (downPayment / 100)
+    const principal = total - downPaymentAmount
 
-    setMonthlyPayment(parseInt(monthlyPayment.toFixed(2)))
+    const monthlyInterestRate = interestRate / 100 / 12
+    const numberOfPayments = loanTerm * 12
+
+    const monthlyTax = (total * (tax / 100)) / 12
+    const monthlyInsurance = (total * (insurance / 100)) / 12
+
+    let monthlyPrincipalAndInterest = 0
+
+    if (monthlyInterestRate === 0) {
+      monthlyPrincipalAndInterest = principal / numberOfPayments
+    } else {
+      monthlyPrincipalAndInterest =
+        (principal *
+          monthlyInterestRate *
+          Math.pow(1 + monthlyInterestRate, numberOfPayments)) /
+        (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1)
+    }
+
+    const payment =
+      monthlyPrincipalAndInterest + monthlyTax + monthlyInsurance
+
+    setMonthlyPayment(Number(payment.toFixed(2)))
   }
-
-  //==================================================================================
 
   return (
     <section className="col-span-full flex flex-col gap-[1.1875rem] rounded-[.9375rem] p-5 shadow-primary sm:col-span-3 lg:col-span-full">
@@ -60,114 +66,116 @@ const MortgageCalculator: React.FC<IProps> = ({ price }) => {
         <h3 className="min-w-fit self-start text-base font-semibold text-black">
           Mortgage Calculator
         </h3>
+
         <span className='flex w-full items-center justify-center after:block after:h-[.0625rem] after:w-full after:bg-black after:opacity-30 after:content-[""]' />
       </div>
+
       <div className="grid grid-cols-2 gap-[.875rem] sm:grid-cols-1 md:grid-cols-2">
-        <div className="relative flex flex-col items-start justify-center gap-[.25rem]">
+        <div className="relative flex flex-col gap-1">
           <InputV2
             id="total"
             type="number"
-            autoComplete="new-password"
-            placeholder={price ? price.toLocaleString() : "0"}
-            onChange={(e) =>
-              setTotal((e.target as HTMLInputElement).valueAsNumber)
-            }
+            value={total}
             label="Total Price"
+            autoComplete="off"
+            onChange={(e) =>
+              setTotal((e.target as HTMLInputElement).valueAsNumber || 0)
+            }
           />
-          <span className="ml-[.25rem] text-2xs font-normal text-black text-opacity-80">
-            $
-          </span>
+          <span className="ml-1 text-2xs text-black/80">$</span>
         </div>
 
-        <div className="relative flex flex-col items-start justify-center gap-[.25rem]">
+        <div className="relative flex flex-col gap-1">
           <InputV2
             id="downpayment"
             type="number"
-            autoComplete="new-password"
-            placeholder="10"
-            onChange={(e) =>
-              setDownPayment((e.target as HTMLInputElement).valueAsNumber)
-            }
+            value={downPayment}
             label="Down Payment"
+            autoComplete="off"
+            onChange={(e) =>
+              setDownPayment(
+                (e.target as HTMLInputElement).valueAsNumber || 0
+              )
+            }
           />
-          <span className="ml-[.25rem] text-2xs font-normal text-black text-opacity-80">
-            %
-          </span>
+          <span className="ml-1 text-2xs text-black/80">%</span>
         </div>
 
-        <div className="relative flex flex-col items-start justify-center gap-[.25rem]">
+        <div className="relative flex flex-col gap-1">
           <InputV2
             id="loanterm"
             type="number"
-            autoComplete="new-password"
-            placeholder="30"
-            onChange={(e) =>
-              setLoanTerm((e.target as HTMLInputElement).valueAsNumber)
-            }
+            value={loanTerm}
             label="Loan Term"
+            autoComplete="off"
+            onChange={(e) =>
+              setLoanTerm((e.target as HTMLInputElement).valueAsNumber || 0)
+            }
           />
-          <span className="ml-[.25rem] text-2xs font-normal text-black text-opacity-80">
-            years
-          </span>
+          <span className="ml-1 text-2xs text-black/80">Years</span>
         </div>
 
-        <div className="relative flex flex-col items-start justify-center gap-[.25rem]">
+        <div className="relative flex flex-col gap-1">
           <InputV2
             id="interest"
             type="number"
-            autoComplete="new-password"
-            placeholder="4.5"
-            onChange={(e) =>
-              setInterestRate((e.target as HTMLInputElement).valueAsNumber)
-            }
+            value={interestRate}
             label="Interest Rate"
+            autoComplete="off"
+            onChange={(e) =>
+              setInterestRate(
+                (e.target as HTMLInputElement).valueAsNumber || 0
+              )
+            }
           />
-          <span className="ml-[.25rem] text-2xs font-normal text-black text-opacity-80">
-            %
-          </span>
+          <span className="ml-1 text-2xs text-black/80">% / year</span>
         </div>
 
-        <div className="relative flex flex-col items-start justify-center gap-[.25rem]">
+        <div className="relative flex flex-col gap-1">
           <InputV2
             id="tax"
             type="number"
-            autoComplete="new-password"
-            placeholder="5"
+            value={tax}
+            label="Property Tax"
+            autoComplete="off"
             onChange={(e) =>
-              setTax((e.target as HTMLInputElement).valueAsNumber)
+              setTax((e.target as HTMLInputElement).valueAsNumber || 0)
             }
-            label="Tax"
           />
-          <span className="ml-[.25rem] text-2xs font-normal text-black text-opacity-80">
-            % per year
-          </span>
+          <span className="ml-1 text-2xs text-black/80">% / year</span>
         </div>
 
-        <div className="relative flex flex-col items-start justify-center gap-[.25rem]">
+        <div className="relative flex flex-col gap-1">
           <InputV2
             id="insurance"
             type="number"
-            autoComplete="new-password"
-            placeholder="3"
+            value={insurance}
+            label="Home Insurance"
+            autoComplete="off"
             onChange={(e) =>
-              setInsurance((e.target as HTMLInputElement).valueAsNumber)
+              setInsurance(
+                (e.target as HTMLInputElement).valueAsNumber || 0
+              )
             }
-            label="Insurance"
           />
-          <span className="ml-[.25rem] text-2xs font-normal text-black text-opacity-80">
-            % per year
-          </span>
+          <span className="ml-1 text-2xs text-black/80">% / year</span>
         </div>
       </div>
-      <div className="relative flex flex-col items-start justify-center gap-[.25rem]">
+
+      <div className="relative flex flex-col gap-1">
         <InputV2
           id="monthly"
-          type="number"
+          type="text"
           readOnly
-          autoComplete="new-password"
-          placeholder="282,000"
-          value={monthlyPayment && monthlyPayment}
-          label="Monthly Payment"
+          label="Estimated Monthly Payment"
+          value={
+            monthlyPayment
+              ? `$${monthlyPayment.toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2
+                })}`
+              : ""
+          }
           inputClassName="w-full"
         />
       </div>
