@@ -206,6 +206,8 @@ const ListingsMapGoogle: React.FC<IProps> = ({ listingsData }) => {
     lat = count > 0 ? totalLat / count : undefined
     lng = count > 0 ? totalLng / count : undefined
 
+    console.log("Calculated lat:", lat, "lng:", lng) // Debugging log
+
     // in case of no listings and no city then set lat and lng from search params if exist
 
     if (viewport && !lat && !lng) {
@@ -232,8 +234,19 @@ const ListingsMapGoogle: React.FC<IProps> = ({ listingsData }) => {
     const zoom = searchParams.get("zoom")
     zoom && instance.map?.setZoom(+zoom)
 
-    setMapyna(instance)
+if (listingsData?.value?.length) {
+  instance.updateData(listingsData.value)
+}
+
+setMapyna(instance)
   }
+
+  useEffect(() => {
+  if (!mapyna) return
+  if (!listingsData?.value) return
+
+  mapyna.updateData(listingsData.value)
+}, [mapyna, listingsData])
 
   /**
   |--------------------------------------------------

@@ -45,8 +45,7 @@ const PropertyLocationGoogle: React.FC<IProps> = ({ lat, lng, details }) => {
           className="size-full rounded-[12px]"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY}&q=${lat}, ${lng}
-              &center=${lat}, ${lng}`}
+          src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY}&q=${lat},${lng}&center=${lat},${lng}`}
         />
       </div>
     </section>

@@ -7,6 +7,7 @@ import type { ListingsValue } from "@/types/listings.type"
 import { removeCommaAndWhitespaceAtStart } from "./helpers"
 
 export const handleMapConfig = async (lat: number, lng: number): Promise<MapynaGoogleConfig> => {
+  console.log("handleMapConfig called with lat:", lat, "lng:", lng) // Debugging log
   return {
     elementId: "mapyna",
     gMapId: "81da06f4d5348d4c",
