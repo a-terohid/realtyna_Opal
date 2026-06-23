@@ -206,7 +206,6 @@ const ListingsMapGoogle: React.FC<IProps> = ({ listingsData }) => {
     lat = count > 0 ? totalLat / count : undefined
     lng = count > 0 ? totalLng / count : undefined
 
-    console.log("Calculated lat:", lat, "lng:", lng) // Debugging log
 
     // in case of no listings and no city then set lat and lng from search params if exist
 
@@ -288,6 +287,14 @@ setMapyna(instance)
   | Event handlers functions
   |--------------------------------------------------
   */
+
+
+  useEffect(() => {
+  console.log("isLoaded:", isLoaded)
+  console.log("listings:", listingsData?.value?.length)
+  console.log("first listing:", listingsData?.value?.[0])
+  console.log("mapyna:", mapyna)
+}, [isLoaded, listingsData, mapyna])
 
   const handleDrawingDone = async (data: {
     geometry: {
