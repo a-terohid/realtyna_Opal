@@ -289,13 +289,6 @@ setMapyna(instance)
   */
 
 
-  useEffect(() => {
-  console.log("isLoaded:", isLoaded)
-  console.log("listings:", listingsData?.value?.length)
-  console.log("first listing:", listingsData?.value?.[0])
-  console.log("mapyna:", mapyna)
-}, [isLoaded, listingsData, mapyna])
-
   const handleDrawingDone = async (data: {
     geometry: {
       lat: number
